@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Form } from "semantic-ui-react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 const SignUp = (props) => {
   const { handleChangeDisplayType } = props;
@@ -24,6 +25,11 @@ const SignUp = (props) => {
     });
     const result = await response.json();
     console.log("DATA", result);
+    if (response.status != 200) {
+      return toast.error(result.message);
+    }
+
+    toast.success("Successfully registered, try loging in!");
   };
   console.log(errors);
   return (
@@ -68,7 +74,7 @@ const SignUp = (props) => {
               <span className="red">enter valid password</span>
             ))}
         </Form.Field>
-        <Button color="blue">Login</Button>
+        <Button color="blue">Sign Up</Button>
       </Form>
       <br />
 
@@ -78,7 +84,7 @@ const SignUp = (props) => {
           onClick={() => handleChangeDisplayType("LOGIN")}
           style={{ color: "blue", cursor: "pointer" }}
         >
-          Register
+          Login
         </span>
       </div>
     </div>
