@@ -50,14 +50,23 @@ const CategoryContainer = () => {
           getCategories={fetchCategories}
         />
       )}
-      <Header
-        as="h4"
-        textAlign={"right"}
-        style={{ cursor: "pointer" }}
-        onClick={() => (window.location.href = "/expenses")}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "flex-end",
+          justifyContent: "flex-end",
+          marginTop: "25px",
+        }}
       >
-        VIEW EXPENSES
-      </Header>
+        <div
+          style={{
+            cursor: "pointer",
+          }}
+          onClick={() => (window.location.href = "/expenses")}
+        >
+          VIEW EXPENSES
+        </div>
+      </div>
       <Divider />
       <Table celled>
         <Table.Header>

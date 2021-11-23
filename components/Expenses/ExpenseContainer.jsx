@@ -225,14 +225,24 @@ const ExpenseContainer = () => {
           );
         })}
       </Grid>
-      <Header
-        as="h4"
-        textAlign={"right"}
-        style={{ cursor: "pointer" }}
-        onClick={() => (window.location.href = "/categories")}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "flex-end",
+          justifyContent: "flex-end",
+          marginTop: "25px",
+        }}
       >
-        VIEW ALL CATEGORIES
-      </Header>
+        <div
+          style={{
+            cursor: "pointer",
+          }}
+          onClick={() => (window.location.href = "/categories")}
+        >
+          {" "}
+          VIEW ALL CATEGORIES
+        </div>
+      </div>
       <Divider />
 
       <Table celled>

@@ -59,9 +59,7 @@ const AddNewCategoryModal = ({ closeModal, showModal, getCategories }) => {
           <Form.Field>
             <label>Color</label>
             <select name="color" {...register("color")}>
-              <option disabled={true} value={null}>
-                Select Color
-              </option>
+              <option></option>
               {colors.map((item) => (
                 <option value={item} key={item}>
                   {item}
