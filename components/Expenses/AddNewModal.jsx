@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Button, Form, Icon, Modal } from "semantic-ui-react";
 import { useForm } from "react-hook-form";
 
-const AddNewModal = ({ closeModal, showModal, getExpenses }) => {
+const AddNewModal = ({ closeModal, showModal, getExpenses, categories }) => {
   const {
     register,
     handleSubmit,
@@ -17,6 +17,7 @@ const AddNewModal = ({ closeModal, showModal, getExpenses }) => {
       amount: data.amount,
       remarks: data.remarks,
       date: data.date,
+      category_id: data.category,
     };
     const response = await fetch("http://localhost:8080/expenses/add", {
       method: "POST",
@@ -61,7 +62,14 @@ const AddNewModal = ({ closeModal, showModal, getExpenses }) => {
           </Form.Field>
           <Form.Field>
             <label>Category</label>
-            <input placeholder="category" {...register("category")} />
+            <select name="category" {...register("category")}>
+              <option></option>
+              {categories.map((item) => (
+                <option value={item._id} key={item._id}>
+                  {item.category_name}
+                </option>
+              ))}
+            </select>
           </Form.Field>
           <Form.Field>
             <label>Remarks</label>
@@ -74,12 +82,6 @@ const AddNewModal = ({ closeModal, showModal, getExpenses }) => {
           <Button positive>SUBMIT</Button>
         </Form>
       </Modal.Content>
-      {/* <Modal.Actions>
-        {/* <Button type="button" negative onClick={closeModal}>
-          CANCEL
-        </Button> */}
-      {/* <Button positive>SUBMIT</Button>
-      </Modal.Actions> */}
     </Modal>
   );
 };
